@@ -11,7 +11,7 @@ class EncourageAd {
     VideoCallback? videoCallback,
     DownloadCallback? downloadCallback,
   }) {
-    _channel?.setMethodCallHandler((call) async {
+    _channel.setMethodCallHandler((call) async {
       return await videoCallHandler(
         call,
         videoCallback: videoCallback,

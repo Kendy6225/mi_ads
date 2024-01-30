@@ -21,7 +21,7 @@ class SplashAd {
 
   void _registerChannel() {
     _channel = MethodChannel(_viewType);
-    _channel?.setMethodCallHandler((MethodCall call) async {
+    _channel.setMethodCallHandler((MethodCall call) async {
       return await videoCallHandler(
         call,
         videoCallback: videoCallback,

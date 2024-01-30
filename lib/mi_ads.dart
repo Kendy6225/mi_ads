@@ -21,10 +21,10 @@ class MiAds {
     VideoCallback? videoCallback,
     DownloadCallback? downloadCallback,
   }) async {
-    SplashAd ad = SplashAd(
-      videoCallback: videoCallback,
-      downloadCallback: downloadCallback,
-    );
+    // SplashAd ad = SplashAd(
+    //   videoCallback: videoCallback,
+    //   downloadCallback: downloadCallback,
+    // );
     return await MiAdsPlatform.instance.showSplashAd(codeId: codeId);
   }
 

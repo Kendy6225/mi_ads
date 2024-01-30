@@ -5,7 +5,6 @@ import 'package:mi_ads/mi_ads_callback.dart';
 class DrawFeedAdView extends StatelessWidget {
   final String _viewType = 'com.mio.mi_ads/DrawfeedAdView';
 
-  final ValueNotifier<bool> _updateVn = ValueNotifier(false);
   late MethodChannel _channel;
   double width;
   double height;
@@ -57,7 +56,7 @@ class DrawFeedAdView extends StatelessWidget {
 
   void _registerChannel(int id) {
     _channel = MethodChannel("${_viewType}_$id");
-    _channel?.setMethodCallHandler((call) async {
+    _channel.setMethodCallHandler((call) async {
       return await viewCallHandler(
         call,
         viewLoadCallback: viewLoadCallback,

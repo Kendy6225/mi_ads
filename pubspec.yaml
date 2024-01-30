@@ -1,7 +1,7 @@
 name: mi_ads
-description: "A new Flutter plugin project."
-version: 0.0.1
-homepage:
+description: "A new Flutter plugin project for xiaomi ads"
+version: 1.0.1
+homepage: https://github.com/Kendy6225/mi_ads.git
 
 environment:
   sdk: '>=3.2.3 <4.0.0'

@@ -4,6 +4,9 @@ A new Flutter plugin of xiaomi advert for Android.
 
 The Mi Meng Advertising SDK (Android) is a software toolkit launched by the Xiaomi Mobile Advertising Alliance to help developers easily monetize advertisements on the MIUI system platform. The current advertising forms supported by the MiMeng Advertising SDK include banner banner ads, insert screen ads, incentive video ads, open screen ads, native template ads, and native self rendering ads.
 
+### doc
+[https://dev.mi.com/distribute/doc/details?pId=1659#_2]
+
 ## 1.Configuration
 ### Permission
 ```xml
