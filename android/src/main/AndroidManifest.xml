@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mio.mi_ads">
+
+    <!--    必要权限配置-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--    以下2个权限为非必要权限，可不申请-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+    <application>
+        <activity
+            android:name=".splashad.SplashActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/LaunchTheme"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>
