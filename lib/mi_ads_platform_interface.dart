@@ -31,6 +31,18 @@ abstract class MiAdsPlatform extends PlatformInterface {
     throw UnimplementedError('setDebugOn() has not been implemented.');
   }
 
+  Future<void> setPersonalizedAd(bool enable){
+    throw UnimplementedError('setPersonalizedAd() has not been implemented.');
+  }
+
+  Future<bool> isInitSuccess(){
+    throw UnimplementedError('isInitSuccess() has not been implemented.');
+  }
+
+  Future<bool> isHasInit(){
+    throw UnimplementedError('isHasInit() has not been implemented.');
+  }
+
   Future<void> showSplashAd({
     required String codeId,
   }) {

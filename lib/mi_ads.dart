@@ -1,5 +1,4 @@
 import 'package:mi_ads/mi_ads_callback.dart';
-import 'package:mi_ads/splashad/splash_ad.dart';
 
 import 'mi_ads_platform_interface.dart';
 
@@ -9,12 +8,22 @@ class MiAds {
   }
 
   static Future<bool> isInitSuccess() async {
-    return Future(() => true);
+    return await MiAdsPlatform.instance.isInitSuccess();
+  }
+
+  static Future<bool> isHasInit() async {
+    return await MiAdsPlatform.instance.isHasInit();
   }
 
   static Future setDebugOn(bool enable) async {
     return await MiAdsPlatform.instance.setDebugOn(enable);
   }
+
+  static Future setPersonalizedAd(bool enable) async {
+    return await MiAdsPlatform.instance.setPersonalizedAd(enable);
+  }
+
+
 
   static Future<void> showSplashAd({
     required String codeId,

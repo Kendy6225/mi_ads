@@ -20,10 +20,25 @@ class MethodChannelMiAds extends MiAdsPlatform {
   }
 
   @override
+  Future<void> setPersonalizedAd(bool enable) async {
+    await methodChannel.invokeMethod('setPersonalizedAd', enable);
+  }
+
+  @override
   Future<void> showSplashAd({
     required String codeId,
   }) async {
     await methodChannel.invokeMethod('showSplashAd', codeId);
     return Future(() => null);
+  }
+
+  @override
+  Future<bool> isInitSuccess() async {
+    return await methodChannel.invokeMethod('isInitSuccess', null);
+  }
+
+  @override
+  Future<bool> isHasInit() async {
+    return await methodChannel.invokeMethod('isHasInit', null);
   }
 }
