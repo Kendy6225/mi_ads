@@ -6,12 +6,12 @@ class SplashAd {
 
   late MethodChannel _channel;
 
-  final VideoCallback? videoCallback;
-  final DownloadCallback? downloadCallback;
+  final VideoCallback videoCallback;
+  final DownloadCallback downloadCallback;
 
   SplashAd({
-    this.videoCallback,
-    this.downloadCallback,
+    required this.videoCallback,
+    required this.downloadCallback,
   }) {
     _registerChannel();
   }

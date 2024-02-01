@@ -5,8 +5,8 @@ class ScreenVideoAd {
   final _channel = const MethodChannel('com.mio.mi_ads/ScreenVideoAd');
 
   ScreenVideoAd({
-    VideoCallback? videoCallback,
-    DownloadCallback? downloadCallback,
+    required VideoCallback videoCallback,
+    required DownloadCallback downloadCallback,
   }) {
     _channel.setMethodCallHandler((call) async {
       return await videoCallHandler(

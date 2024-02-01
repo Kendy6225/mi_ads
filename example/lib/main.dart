@@ -91,9 +91,38 @@ class HomePage extends StatelessWidget {
           }),
           _buildButton('激励视频加载', () {
             encourageAd = EncourageAd(
-                videoCallback: VideoCallback(onAdLoadSuccess: (data) {
-                  print('激励视频数据 = $data');
-                }),
+                videoCallback: VideoCallback(
+                  onAdRequestSuccess: (){
+                    print('mainEncourage = onAdRequestSuccess');
+                  },
+                  onAdLoadSuccess: (data) {
+                    print('mainEncourage = $data');
+                  },
+                  onAdClosed: (){
+                    print('mainEncourage = onAdClosed');
+                  },
+                  onAdShow: (){
+                    print('mainEncourage = onAdShow');
+                  },
+                  onVideoStart: (){
+                    print('mainEncourage = onVideoStart');
+                  },
+                  onReward: (){
+                    print('mainEncourage = onReward');
+                  },
+                  onVideoSkip: (){
+                    print('mainEncourage = onVideoSkip');
+                  },
+                  onVideoComplete: (){
+                    print('mainEncourage = onVideoComplete');
+                  },
+                  onPicAdEnd: (){
+                    print('mainEncourage = onPicAdEnd');
+                  },
+                  onAdClick: (){
+                    print('mainEncourage = onAdClick');
+                  },
+                ),
                 downloadCallback: DownloadCallback());
             encourageAd?.loadAd(
               '785ae1952c1ff94c3492c7a1777284df',

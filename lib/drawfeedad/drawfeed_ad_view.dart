@@ -15,20 +15,20 @@ class DrawFeedAdView extends StatelessWidget {
 
   final String codeId;
 
-  final ViewLoadCallback? viewLoadCallback;
-  final DownloadCallback? downloadCallback;
+  final ViewLoadCallback viewLoadCallback;
+  final DownloadCallback downloadCallback;
 
   DrawFeedAdView({
     super.key,
     required this.codeId,
     required this.width,
     required this.height,
+    required this.viewLoadCallback,
+    required this.downloadCallback,
     this.margin,
     this.padding,
     this.color,
     this.radius,
-    this.viewLoadCallback,
-    this.downloadCallback,
   });
 
   @override

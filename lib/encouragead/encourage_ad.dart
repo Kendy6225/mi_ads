@@ -5,8 +5,8 @@ class EncourageAd {
   final _channel = const MethodChannel('com.mio.mi_ads/EncourageAd');
 
   EncourageAd({
-    VideoCallback? videoCallback,
-    DownloadCallback? downloadCallback,
+    required VideoCallback videoCallback,
+    required DownloadCallback downloadCallback,
   }) {
     _channel.setMethodCallHandler((call) async {
       return await videoCallHandler(

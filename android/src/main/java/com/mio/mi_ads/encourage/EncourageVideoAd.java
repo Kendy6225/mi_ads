@@ -102,7 +102,7 @@ public class EncourageVideoAd implements MethodChannel.MethodCallHandler {
             @Override
             public void onAdDismissed() {
                 // 广告消失
-                MimoSDKManager.log(TAG, "onAdDismissed");
+                MimoSDKManager.log(TAG, "onAdClosed");
                 activity.runOnUiThread(() -> mChannel.invokeMethod("onAdClosed", null));
             }
 

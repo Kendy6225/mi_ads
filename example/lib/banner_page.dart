@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mi_ads/bannerad/banner_ad_view.dart';
 import 'package:mi_ads/drawfeedad/drawfeed_ad_view.dart';
+import 'package:mi_ads/mi_ads_callback.dart';
 import 'package:mi_ads/nativead/native_ad_view.dart';
 
 class BannerPage extends StatelessWidget {
@@ -18,6 +19,8 @@ class BannerPage extends StatelessWidget {
         right: 16,
       ),
       color: Colors.red,
+      viewLoadCallback: VideoCallback(),
+      downloadCallback: DownloadCallback(),
     );
     return Scaffold(
       body: Column(
@@ -52,15 +55,18 @@ class DrawFeedPage extends StatelessWidget {
       body: Column(
         children: [
           DrawFeedAdView(
-              codeId: codeId,
-              width: 300,
-              height: 210,
-              margin: const EdgeInsets.only(
-                top: 80,
-                left: 16,
-                right: 16,
-              ),
-              color: Colors.yellow),
+            codeId: codeId,
+            width: 300,
+            height: 210,
+            margin: const EdgeInsets.only(
+              top: 80,
+              left: 16,
+              right: 16,
+            ),
+            color: Colors.yellow,
+            viewLoadCallback: VideoCallback(),
+            downloadCallback: DownloadCallback(),
+          ),
         ],
       ),
     );
@@ -68,7 +74,6 @@ class DrawFeedPage extends StatelessWidget {
 }
 
 class NativeAdPage extends StatelessWidget {
-
   String codeId;
 
   NativeAdPage(this.codeId);
@@ -82,7 +87,9 @@ class NativeAdPage extends StatelessWidget {
             codeId: codeId,
             width: 300,
             height: 200,
-          )
+            viewLoadCallback: VideoCallback(),
+            downloadCallback: DownloadCallback(),
+          ),
         ],
       ),
     );
