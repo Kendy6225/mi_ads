@@ -5,18 +5,18 @@ import 'package:mi_ads/mi_ads_callback.dart';
 final class NativeAdView extends StatelessWidget {
   final String _viewType = 'com.mio.mi_ads/NativeAdView';
   late MethodChannel _channel;
-  double width;
-  double height;
+  final double width;
+  final double height;
 
-  EdgeInsetsGeometry? margin;
-  EdgeInsetsGeometry? padding;
-  Color? color;
-  BorderRadius? radius;
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
+  final Color? color;
+  final BorderRadius? radius;
 
-  String codeId;
+  final String codeId;
 
-  ViewLoadCallback? viewLoadCallback;
-  DownloadCallback? downloadCallback;
+  final ViewLoadCallback? viewLoadCallback;
+  final DownloadCallback? downloadCallback;
 
   NativeAdView({
     super.key,
@@ -26,6 +26,7 @@ final class NativeAdView extends StatelessWidget {
     this.margin,
     this.padding,
     this.color,
+    this.radius,
     this.viewLoadCallback,
     this.downloadCallback,
   });

@@ -4,9 +4,6 @@ import 'package:mi_ads/mi_ads_callback.dart';
 class EncourageAd {
   final _channel = const MethodChannel('com.mio.mi_ads/EncourageAd');
 
-  VideoCallback? videoCallback;
-  DownloadCallback? downloadCallback;
-
   EncourageAd({
     VideoCallback? videoCallback,
     DownloadCallback? downloadCallback,

@@ -6,16 +6,16 @@ class BannerAdView extends StatelessWidget {
   final String _viewType = 'com.mio.mi_ads/BannerExpressAdView';
 
   late MethodChannel _channel;
-  double width;
-  double height;
-  EdgeInsetsGeometry? margin;
-  EdgeInsetsGeometry? padding;
-  Color? color;
-  BorderRadius? radius;
+  final double width;
+  final double height;
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
+  final Color? color;
+  final BorderRadius? radius;
 
-  String codeId;
-  ViewLoadCallback? viewLoadCallback;
-  DownloadCallback? downloadCallback;
+  final String codeId;
+  final ViewLoadCallback? viewLoadCallback;
+  final DownloadCallback? downloadCallback;
 
   BannerAdView({
     super.key,
@@ -25,6 +25,7 @@ class BannerAdView extends StatelessWidget {
     this.margin,
     this.padding,
     this.color,
+    this.radius,
     this.viewLoadCallback,
     this.downloadCallback,
   });

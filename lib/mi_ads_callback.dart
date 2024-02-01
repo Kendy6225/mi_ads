@@ -4,7 +4,7 @@ export 'mi_ads_callback_handler.dart';
 typedef OnAdRequestSuccess = Function();
 
 /// 广告缓存成功
-typedef OnAdLoadSuccess = Function(dynamic? adData);
+typedef OnAdLoadSuccess = Function(dynamic adData);
 
 /// 广告请求加载失败
 typedef OnAdLoadFailed = Function(int code, String msg);

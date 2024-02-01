@@ -2,11 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:mi_ads/mi_ads_callback.dart';
 
 class ScreenVideoAd {
-
   final _channel = const MethodChannel('com.mio.mi_ads/ScreenVideoAd');
-
-  VideoCallback? videoCallback;
-  DownloadCallback? downloadCallback;
 
   ScreenVideoAd({
     VideoCallback? videoCallback,
