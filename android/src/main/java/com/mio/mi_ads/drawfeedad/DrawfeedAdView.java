@@ -66,19 +66,23 @@ public class DrawfeedAdView implements PlatformView, MethodChannel.MethodCallHan
             @Override
             public void onAdLoaded() {
                 // 加载成功, 在需要的时候在此处展示广告
-                mChannel.invokeMethod("onAdLoadSuccess", null);
                 MimoSDKManager.log(TAG, "onAdLoadSuccess");
-                showAd();
+                activity.runOnUiThread(() -> {
+                    mChannel.invokeMethod("onAdLoadSuccess", null);
+                    showAd();
+                });
             }
 
             @Override
             public void onAdLoadFailed(int errorCode, String errorMessage) {
                 // 加载失败
-                Map map = new HashMap();
-                map.put("code", errorCode);
-                map.put("msg", errorMessage);
-                mChannel.invokeMethod("onAdLoadFailed", map);
                 MimoSDKManager.log(TAG, "onAdLoadFailed code = " + errorCode + " msg = " + errorMessage);
+                activity.runOnUiThread(() -> {
+                    Map map = new HashMap();
+                    map.put("code", errorCode);
+                    map.put("msg", errorMessage);
+                    mChannel.invokeMethod("onAdLoadFailed", map);
+                });
             }
 
         });
@@ -88,35 +92,36 @@ public class DrawfeedAdView implements PlatformView, MethodChannel.MethodCallHan
         mAd.show(mContainer, new TemplateAd.TemplateAdInteractionListener() {
 
             @Override
-            public void onAdShow() {
-                // 广告展示
-                mChannel.invokeMethod("onAdShow", null);
-                MimoSDKManager.log(TAG, "onAdShow");
+            public void onAdClick() {
+                // 广告被点击
+                MimoSDKManager.log(TAG, "onAdClick");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onAdClick", null));
             }
 
             @Override
-
-            public void onAdClick() {
-                // 广告被点击
-                mChannel.invokeMethod("onAdClick", null);
-                MimoSDKManager.log(TAG, "onAdClick");
+            public void onAdShow() {
+                // 广告被展示
+                MimoSDKManager.log(TAG, "onAdShow");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onAdShow", null));
             }
 
             @Override
             public void onAdDismissed() {
                 // 广告消失
-                mChannel.invokeMethod("onAdClosed", null);
                 MimoSDKManager.log(TAG, "onAdClosed");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onAdClosed", null));
             }
 
             @Override
             public void onAdRenderFailed(int errorCode, String errorMsg) {
                 // 广告渲染失败
-                Map<String, Object> map = new HashMap<>();
-                map.put("code", errorCode);
-                map.put("msg", errorMsg);
-                mChannel.invokeMethod("onAdRenderFailed", map);
                 MimoSDKManager.log(TAG, "onAdRenderFailed code = " + errorCode + " msg = " + errorMsg);
+                activity.runOnUiThread(() -> {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("code", errorCode);
+                    map.put("msg", errorMsg);
+                    mChannel.invokeMethod("onAdRenderFailed", map);
+                });
             }
 
         });
@@ -126,64 +131,64 @@ public class DrawfeedAdView implements PlatformView, MethodChannel.MethodCallHan
             @Override
             public void onDownloadStarted() {
                 //开始下载
-                mChannel.invokeMethod("onDownloadStarted", null);
                 MimoSDKManager.log(TAG, "onDownloadStarted");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadStarted", null));
             }
 
             @Override
             public void onDownloadProgressUpdated(int progress) {
                 //下载进度，例如：${progress}%
-                mChannel.invokeMethod("onDownloadProgressUpdated", progress);
                 MimoSDKManager.log(TAG, "onDownloadProgressUpdated progress = " + progress);
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadProgressUpdated", progress));
             }
 
             @Override
             public void onDownloadPaused() {
                 //下载暂停
-                mChannel.invokeMethod("onDownloadPaused", null);
                 MimoSDKManager.log(TAG, "onDownloadPaused");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadPaused", null));
             }
 
             @Override
             public void onDownloadCancel() {
                 //取消下载
-                mChannel.invokeMethod("onDownloadCancel", null);
                 MimoSDKManager.log(TAG, "onDownloadCancel");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadCancel", null));
             }
 
             @Override
             public void onDownloadFailed(int errorCode) {
                 //下载失败， 若需要了解errorCode具体含义，请咨询米盟
-                mChannel.invokeMethod("onDownloadFailed", errorCode);
                 MimoSDKManager.log(TAG, "onDownloadFailed code = " + errorCode);
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadFailed", errorCode));
             }
 
             @Override
             public void onDownloadFinished() {
                 //下载结束
-                mChannel.invokeMethod("onDownloadFinished", null);
                 MimoSDKManager.log(TAG, "onDownloadFinished");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadFinished", null));
             }
 
             @Override
             public void onInstallStart() {
                 //开始安装
-                mChannel.invokeMethod("onInstallStart", null);
                 MimoSDKManager.log(TAG, "onInstallStart");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onInstallStart", null));
             }
 
             @Override
             public void onInstallFailed(int errorCode) {
                 //安装失败
-                mChannel.invokeMethod("onInstallFailed", errorCode);
                 MimoSDKManager.log(TAG, "onInstallFailed code = " + errorCode);
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onInstallFailed", errorCode));
             }
 
             @Override
             public void onInstallSuccess() {
                 //安装成功
-                mChannel.invokeMethod("onInstallSuccess", null);
                 MimoSDKManager.log(TAG, "onInstallSuccess");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onInstallSuccess", null));
             }
         });
 

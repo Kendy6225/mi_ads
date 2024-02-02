@@ -117,67 +117,66 @@ public class SplashActivity extends Activity implements MethodChannel.MethodCall
 
         mAd.setSplashDownloadListener(new SplashAd.SplashDownloadListener() {
 
-            @Override
             public void onDownloadStarted() {
                 //开始下载
                 MimoSDKManager.log(TAG, "onDownloadStarted");
-                mChannel.invokeMethod("onDownloadStarted", null);
+                runOnUiThread(() -> mChannel.invokeMethod("onDownloadStarted", null));
             }
 
             @Override
             public void onDownloadProgressUpdated(int progress) {
                 //下载进度，例如：${progress}%
                 MimoSDKManager.log(TAG, "onDownloadProgressUpdated progress = " + progress);
-                mChannel.invokeMethod("onDownloadProgressUpdated", progress);
+                runOnUiThread(() -> mChannel.invokeMethod("onDownloadProgressUpdated", progress));
             }
 
             @Override
             public void onDownloadPaused() {
                 //下载暂停
                 MimoSDKManager.log(TAG, "onDownloadPaused");
-                mChannel.invokeMethod("onDownloadPaused", null);
+                runOnUiThread(() -> mChannel.invokeMethod("onDownloadPaused", null));
             }
 
             @Override
             public void onDownloadCancel() {
                 //取消下载
                 MimoSDKManager.log(TAG, "onDownloadCancel");
-                mChannel.invokeMethod("onDownloadCancel", null);
+                runOnUiThread(() -> mChannel.invokeMethod("onDownloadCancel", null));
             }
 
             @Override
             public void onDownloadFailed(int errorCode) {
                 //下载失败， 若需要了解errorCode具体含义，请咨询米盟
                 MimoSDKManager.log(TAG, "onDownloadFailed code = " + errorCode);
-                mChannel.invokeMethod("onDownloadFailed", errorCode);
+                runOnUiThread(() -> mChannel.invokeMethod("onDownloadFailed", errorCode));
             }
 
             @Override
             public void onDownloadFinished() {
                 //下载结束
                 MimoSDKManager.log(TAG, "onDownloadFinished");
-                mChannel.invokeMethod("onDownloadFinished", null);
+                runOnUiThread(() -> mChannel.invokeMethod("onDownloadFinished", null));
             }
 
             @Override
             public void onInstallStart() {
                 //开始安装
                 MimoSDKManager.log(TAG, "onInstallStart");
-                mChannel.invokeMethod("onInstallStart", null);
+                runOnUiThread(() -> mChannel.invokeMethod("onInstallStart", null));
             }
 
             @Override
             public void onInstallFailed(int errorCode) {
                 //安装失败
                 MimoSDKManager.log(TAG, "onInstallFailed code = " + errorCode);
-                mChannel.invokeMethod("onInstallFailed", errorCode);
+                runOnUiThread(() -> mChannel.invokeMethod("onInstallFailed", errorCode));
             }
 
             @Override
             public void onInstallSuccess() {
                 //安装成功
                 MimoSDKManager.log(TAG, "onInstallSuccess");
-                mChannel.invokeMethod("onInstallSuccess", null);
+                runOnUiThread(() -> mChannel.invokeMethod("onInstallSuccess", null));
             }
         });
 

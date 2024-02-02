@@ -78,19 +78,23 @@ public class NativeAdView implements PlatformView, MethodChannel.MethodCallHandl
             @Override
             public void onAdLoadSuccess(NativeAdData nativeAdData) {
                 // 请求广告成功, 返回了广告数据对象 nativeAdData
-                mChannel.invokeMethod("onAdLoadSuccess", nativeAdData);
                 MimoSDKManager.log(TAG, "onAdLoadSuccess");
-                showAd();
+                activity.runOnUiThread(() -> {
+                    mChannel.invokeMethod("onAdLoadSuccess", nativeAdData);
+                    showAd();
+                });
             }
 
             @Override
             public void onAdLoadFailed(int error, String errorMsg) {
                 // 请求广告失败
-                Map<String, Object> map = new HashMap<>();
-                map.put("code", error);
-                map.put("msg", errorMsg);
-                mChannel.invokeMethod("onAdLoadFailed", map);
                 MimoSDKManager.log(TAG, "onAdLoadFailed code = " + error + " msg = " + errorMsg);
+                activity.runOnUiThread(() -> {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("code", error);
+                    map.put("msg", errorMsg);
+                    mChannel.invokeMethod("onAdLoadFailed", map);
+                });
             }
         });
     }
@@ -101,31 +105,33 @@ public class NativeAdView implements PlatformView, MethodChannel.MethodCallHandl
             @Override
             public void onAdClick() {
                 // 广告被点击
-                mChannel.invokeMethod("onAdClick", null);
                 MimoSDKManager.log(TAG, "onAdClick");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onAdClick", null));
             }
 
             @Override
 
             public void onAdShow() {
                 // 广告展示
-                mChannel.invokeMethod("onAdShow", null);
                 MimoSDKManager.log(TAG, "onAdShow");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onAdShow", null));
             }
 
             @Override
             public void onAdClosed() {
-                mChannel.invokeMethod("onAdClosed", null);
                 MimoSDKManager.log(TAG, "onAdClosed");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onAdClosed", null));
             }
 
             @Override
             public void onRenderFail(int code, String msg) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("code", code);
-                map.put("msg", msg);
-                mChannel.invokeMethod("onRenderFail", map);
                 MimoSDKManager.log(TAG, "onRenderFail code = " + code + " msg = " + msg);
+                activity.runOnUiThread(() -> {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("code", code);
+                    map.put("msg", msg);
+                    mChannel.invokeMethod("onRenderFail", map);
+                });
             }
 
         });
@@ -134,64 +140,64 @@ public class NativeAdView implements PlatformView, MethodChannel.MethodCallHandl
             @Override
             public void onDownloadStarted() {
                 //开始下载
-                mChannel.invokeMethod("onDownloadStarted", null);
                 MimoSDKManager.log(TAG, "onDownloadStarted");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadStarted", null));
             }
 
             @Override
             public void onDownloadProgressUpdated(int progress) {
                 //下载进度，例如：${progress}%
-                mChannel.invokeMethod("onDownloadProgressUpdated", progress);
                 MimoSDKManager.log(TAG, "onDownloadProgressUpdated progress = " + progress);
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadProgressUpdated", progress));
             }
 
             @Override
             public void onDownloadPaused() {
                 //下载暂停
-                mChannel.invokeMethod("onDownloadPaused", null);
                 MimoSDKManager.log(TAG, "onDownloadPaused");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadPaused", null));
             }
 
             @Override
             public void onDownloadCancel() {
                 //取消下载
-                mChannel.invokeMethod("onDownloadCancel", null);
                 MimoSDKManager.log(TAG, "onDownloadCancel");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadCancel", null));
             }
 
             @Override
             public void onDownloadFailed(int errorCode) {
                 //下载失败， 若需要了解errorCode具体含义，请咨询米盟
-                mChannel.invokeMethod("onDownloadFailed", errorCode);
                 MimoSDKManager.log(TAG, "onDownloadFailed code = " + errorCode);
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadFailed", errorCode));
             }
 
             @Override
             public void onDownloadFinished() {
                 //下载结束
-                mChannel.invokeMethod("onDownloadFinished", null);
                 MimoSDKManager.log(TAG, "onDownloadFinished");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onDownloadFinished", null));
             }
 
             @Override
             public void onInstallStart() {
                 //开始安装
-                mChannel.invokeMethod("onInstallStart", null);
                 MimoSDKManager.log(TAG, "onInstallStart");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onInstallStart", null));
             }
 
             @Override
             public void onInstallFailed(int errorCode) {
                 //安装失败
-                mChannel.invokeMethod("onInstallFailed", errorCode);
                 MimoSDKManager.log(TAG, "onInstallFailed code = " + errorCode);
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onInstallFailed", errorCode));
             }
 
             @Override
             public void onInstallSuccess() {
                 //安装成功
-                mChannel.invokeMethod("onInstallSuccess", null);
                 MimoSDKManager.log(TAG, "onInstallSuccess");
+                activity.runOnUiThread(() -> mChannel.invokeMethod("onInstallSuccess", null));
             }
         });
     }
