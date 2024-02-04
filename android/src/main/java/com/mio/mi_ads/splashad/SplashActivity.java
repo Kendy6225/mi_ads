@@ -58,6 +58,8 @@ public class SplashActivity extends Activity implements MethodChannel.MethodCall
     }
 
     private void loadAndShow() {
+        if (mAd == null)
+            return;
         mAd.loadAndShow(mContainer, mCodeId, new SplashAd.SplashAdListener() {
 
             @Override

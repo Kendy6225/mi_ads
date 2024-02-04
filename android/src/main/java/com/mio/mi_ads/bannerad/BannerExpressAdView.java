@@ -61,6 +61,8 @@ public class BannerExpressAdView implements PlatformView, MethodChannel.MethodCa
     }
 
     private void loadExpressAd() {
+        if (mAd == null)
+            return;
         mAd.loadAd(mCodeId, new BannerAd.BannerLoadListener() {
             //请求成功回调
             @SuppressLint("LongLogTag")
@@ -89,6 +91,8 @@ public class BannerExpressAdView implements PlatformView, MethodChannel.MethodCa
     }
 
     private void showAd() {
+        if (mAd == null)
+            return;
         mAd.showAd(activity, mContainer, new BannerAd.BannerInteractionListener() {
 
             @Override

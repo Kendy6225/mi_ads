@@ -1,6 +1,6 @@
 name: mi_ads
 description: "A new Flutter plugin of xiaomi advert for Android."
-version: 1.0.3
+version: 1.0.5
 homepage: https://github.com/Kendy6225/mi_ads.git
 
 environment:

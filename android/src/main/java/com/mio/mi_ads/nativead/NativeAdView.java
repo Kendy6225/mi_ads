@@ -73,6 +73,8 @@ public class NativeAdView implements PlatformView, MethodChannel.MethodCallHandl
     }
 
     private void loadAd() {
+        if (mAd == null)
+            return;
         mAd.load(mCodeId, new NativeAd.NativeAdLoadListener() {
 
             @Override
@@ -100,6 +102,8 @@ public class NativeAdView implements PlatformView, MethodChannel.MethodCallHandl
     }
 
     private void showAd() {
+        if (mAd == null)
+            return;
         mAd.registerAdView(mContainer, new NativeAd.NativeAdInteractionListener() {
 
             @Override

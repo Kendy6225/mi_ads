@@ -61,6 +61,8 @@ public class DrawfeedAdView implements PlatformView, MethodChannel.MethodCallHan
     }
 
     private void loadAd() {
+        if (mAd == null)
+            return;
         mAd.load(mCodeId, new TemplateAd.TemplateAdLoadListener() {
 
             @Override
@@ -89,6 +91,8 @@ public class DrawfeedAdView implements PlatformView, MethodChannel.MethodCallHan
     }
 
     private void showAd() {
+        if (mAd == null)
+            return;
         mAd.show(mContainer, new TemplateAd.TemplateAdInteractionListener() {
 
             @Override
